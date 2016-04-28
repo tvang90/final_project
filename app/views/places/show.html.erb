@@ -1,0 +1,68 @@
+<h2>Study Spot</h2>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6">
+			<h2><%= @place.name %></h2><br>
+			<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@place.latitude}%2C#{@place.longitude}" %><br>
+		</div>
+		
+		<div class="col-md-4 info">
+			<ul>
+				<li>Name: <%= @place.name %></li><br>
+				<li>Description: <%= @place.description %></li><br>
+				<li>Category: <%= @place.category.name %></li><br>
+				<li>Address: </li><br>
+				<li><%= @place.address1 %></li><br>
+				<li><%= @place.city %></li><br>
+				<li><%= @place.state %></li><br>
+				<li><%= @place.zipcode %></li><br>
+				<li><%= @place.phone %></li><br>
+				<li><%= @place.email %></li><br>
+				<li><%= link_to "Write a Review", new_place_review_path(@place) %></li>
+			</ul>
+		</div>
+
+		<div class="row">
+		<div class="col-md-12 rating">
+			<span class="star-rating">Average Rating: <%= @avg_rating %></span>
+			<h2>Review</h2>
+			<% if @reviews.blank? %>
+				<p>No Reviews Yet</p>	
+			<% else %>
+				<table class="table">
+					<thead>
+						<tr>
+							<th class="col-mid-3"></th>
+							<th class="col-mid-9"></th>
+						</tr>
+					</thead>		
+					<tbody>
+						<% @reviews.each do |review| %>
+						<tr>
+							<td>
+								<h5><%= "#{review.user.email}" %></h5>
+							</td>
+							<td>
+									<div>
+										<p>User Rating: <%= review.rating %> </p>
+									</div>	
+
+									<div>
+										<p>Review</p>			
+										<%= review.comment %>
+									</div>
+							</td>
+						</tr>
+						<% end %>
+					</tbody>	
+				</table>	
+			<% end %>			
+		</div>
+	</div>
+	</div>
+</div>
+
+
+
+

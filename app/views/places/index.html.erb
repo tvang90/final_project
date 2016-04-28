@@ -1,0 +1,39 @@
+`<div class="row">
+	<div class="col-md-12">
+			<div class = "search-form search">
+			<h2 align="center">Search Here To Find A Study Spot Near You!</h2>
+				<ul>
+					<%= form_tag search_places_path, method: :get do |f| %>
+						Keywords:
+					<li><%= text_field_tag :search, nil, placeholder: "cafe, library, lobbies, etc.." %></li>
+						Address:
+					<li><%= text_field_tag :location, nil, placeholder: "New York City, 48911 etc...." %></li>
+						Categories:
+					<li><%= select_tag :category, options_for_select(Category.all.map{ |c| [c.name, c.id]}) %></li>
+					<li><%= submit_tag 'Search', class: "btn btn-primary btn-large" %></li>
+						<% end %> 
+					</ul>
+				</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12 bg_image"></div>
+</div>
+
+<div class="container-fluid break">
+	<div class="row">
+		<div class="col-md-4 university">
+			<h3>University</h3>
+		</div>
+		<div class="col-md-4">
+			<h3>City</h3>
+		</div>
+		<div class="col-md-4">
+			<h3>About</h3>
+		</div>
+	</div>
+</div>
+
+
+

@@ -1,0 +1,20 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<h2> Nearby Places </h2>
+			<% @places.each do |place| %>
+			<ul>
+				<li><%= link_to place.name, place %></li><br>
+				<li><%= place.address1 %></li>
+					<%= place.address2 %>
+					<%= place.city %>
+					<%= place.state %><br>
+					<%= place.zipcode %><br>
+					<%= place.phone %><br>
+					<%= place.email %><br>
+			</ul>
+			<% end %>
+		</div>
+	</div>
+</div>
+
