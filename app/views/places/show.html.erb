@@ -21,6 +21,13 @@
 				<li><%= @place.email %></li><br>
 				<li><%= link_to "Write a Review", new_place_review_path(@place) %></li>
 			</ul>
+				<h3 align="center">Places Near By</h3>
+					<ul>
+					<% for place in @place.nearbys(10) %>
+	  				<li><%= link_to place.name, place %> 
+	  				(<%= place.distance.round(2) %> miles)</li>
+					<% end %>
+					</ul>
 		</div>
 
 		<div class="row">
@@ -44,14 +51,14 @@
 								<h5><%= "#{review.user.email}" %></h5>
 							</td>
 							<td>
-									<div>
-										<p>User Rating: <%= review.rating %> </p>
-									</div>	
+								<div>
+									<p>User Rating: <%= review.rating %> </p>
+								</div>	
 
-									<div>
-										<p>Review</p>			
-										<%= review.comment %>
-									</div>
+								<div>
+									<p>Review</p>			
+									<%= review.comment %>
+								</div>
 							</td>
 						</tr>
 						<% end %>

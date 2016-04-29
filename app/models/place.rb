@@ -17,7 +17,7 @@ class Place < ActiveRecord::Base
 	def self.search(params)
 		places = Place.where(category_id: params[:category].to_i)
 		places = Place.where("name like ? or decription like ?", "%#{params[:search]}%", "%#{params[:search]}%") if params[:search].present?
-		places = Place.near(params[:location], 10) if params[:location].present?
+		places = Place.near(params[:place], 10) if params[:place].present?
 		places
 	end
 end
